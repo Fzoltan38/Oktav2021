@@ -11,6 +11,7 @@
     <h1>Üdvözöllek!</h1>
     <form action="index.php" method="POST">
         <input type="number" name="number1"><br>
+        <input type="text" name="text1"><br>
         <input type="submit" value="Elküld">
     </form>
 </body>
@@ -21,17 +22,18 @@
 if(isset($_POST['number1']))
 {
     $ho=$_POST['number1'];
+    $szoveg=$_POST['text1'];
     
     if(!empty($ho))
     {
         if($ho<=0){
-            echo("<h2>Szilárd.</h2>");
+            echo("Szilárd $szoveg.");
         }
         else if($ho<100){
-            echo("Folyékony.");
+            echo("Folyékony $szoveg.");
         }
         else {
-            echo("Légnemű.");
+            echo("Légnemű $szoveg.");
         }
     }
     else {
