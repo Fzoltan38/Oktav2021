@@ -30,13 +30,13 @@ style="margin-bottom:0;background-image: url(kep1.jpg);;background-size:cover;he
         <a class="nav-link" href="index.php?azonosito=fo">Főoldal</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Hírek</a>
+      <a class="nav-link" href="index.php?azonosito=news">Hírek</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Megrendelés</a>
+      <a class="nav-link" href="index.php?azonosito=order">Megrendelés</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Kapcsolat</a>
+      <a class="nav-link" href="index.php?azonosito=contact">Kapcsolat</a>
       </li>    
     </ul>
   </div>  
@@ -45,27 +45,34 @@ style="margin-bottom:0;background-image: url(kep1.jpg);;background-size:cover;he
 
 <div class="container" style="margin-top:30px">
   <div class="row flex-column-reverse flex-md-row">
-    <div class="col-sm-8">
+    <div class="col-sm-8"><!--Az tartalmi rész megjelenítésére van-->
      <?php
-      if(!empty($_GET['azonosito']) && $_GET['azonosito']=='fo')
-      {
+      if(!empty($_GET['azonosito']) && $_GET['azonosito']=='fo'){
         include('fo.php');
+      }
+
+      if(!empty($_GET['azonosito']) && $_GET['azonosito']=='news'){
+        include('hirek.php');
+      }
+
+      if(!empty($_GET['azonosito']) && $_GET['azonosito']=='order'){
+        include('megrendeles.php');
+      }
+
+      if(!empty($_GET['azonosito']) && $_GET['azonosito']=='contact'){
+        include('kapcsolat.php');
       }
      ?>
     </div>
 
-    <div class="col-sm-4">
+    <div class="col-sm-4"><!--Az űrlapok megjelenítésére van-->
     <?php 
 
       if(!empty($_GET['azonosito']) && $_GET['azonosito']=='reglap')
-      {
         include('reg.php');
-      }
       else 
-      {
         include('log.php');
-      }     
-    
+
     ?>
     </div>
   </div>
