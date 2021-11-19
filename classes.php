@@ -24,6 +24,31 @@ class Forms{
     }
 }
 
+class Connect{
+    private $server;
+    private $db;
+    private $uid;
+    private $password;
+    private $conn;
+
+    public function getConn(){
+        return $this->conn;
+    }
+
+    function __construct(){
+        $this->server="localhost";
+        $this->db="oktav";
+        $this->uid="root";
+        $this->password="";
+
+        $this->conn=mysqli_connect($this->server,$this->uid, $this->password,$this->db);
+
+        if ($this->conn->connect_error) {
+            die("Hiba a catlakozás során!: " . $this->conn->connect_error);
+        }
+    }
+}
+
 class LogCheck extends Forms{
     
     //Az adattagok értékkel való ellátása a konstruktor feldata
@@ -71,6 +96,53 @@ class LogCheck extends Forms{
         else {
             $this->userPassErr="";
         }
+    }
+
+    function userLog(){
+        if($this->userNameErr=="" && $this->userPassErr==""){
+            
+            $sql="SELECT * FROM `users` WHERE `uname`='".$this->userName."' AND `upass`='".md5($this->userPass)."'";
+
+            $c=new Connect();
+            $result=mysqli_query($c->getConn(),$sql);
+
+            if(mysqli_num_rows($result)>0){
+                echo("Van találat!"); 
+            }
+            else {
+                echo("Nincs találat!");
+            }
+
+        }
+    }
+}
+
+class Reg extends Forms{
+
+    private $userEmail;
+    private $userFullName;
+
+    public function GetuserEmail(){
+        return $this->userEmail;
+    }
+
+    public function GetuserFullName(){
+        return $this->userFullName;
+    }
+
+    function __construct(){
+
+        $this->userName=$_POST['uname']; 
+        $this->userPass=$_POST['upass1'];
+        $this->userPass2=$_POST['upass2'];
+        $this->userEmail=$_POST['uemail'];
+        $this->userFullName=$_POST['ufullname'];
+
+        
+        $sql="INSERT INTO `users`(`uname`, `upass`, `umail`, `ufullname`, `rank`, `ban`, `regtime`, `logtime`) VALUES ('".$this->GetuserName()."','".md5($this->GetuserPass())."','".$this->GetuserEmail()."','".$this->GetuserFullName()."',0,0,'".date('Y-m-d-H-i')."','0')";
+
+        $c=new Connect();
+        mysqli_query($c->getConn(), $sql);
     }
 }
 ?>

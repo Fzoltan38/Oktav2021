@@ -37,7 +37,14 @@ style="margin-bottom:0;background-image: url(kep1.jpg);;background-size:cover;he
       </li>
       <li class="nav-item">
       <a class="nav-link" href="index.php?azonosito=contact">Kapcsolat</a>
-      </li>    
+      </li>  
+      <?php if(isset($_SESSION['id'])){
+        echo "
+        <li class='nav-item'>
+        <a class='nav-link' href='index.php?azonosito=admin'>Admin</a>
+        </li> ";
+      }
+      ?>     
     </ul>
   </div>  
 
@@ -48,7 +55,7 @@ style="margin-bottom:0;background-image: url(kep1.jpg);;background-size:cover;he
     <div class="col-sm-8"><!--Az tartalmi rész megjelenítésére van-->
      <?php
       if(!empty($_GET['azonosito']) && $_GET['azonosito']=='fo'){
-        include('fo.php');
+        include('fo.php');  
       }
 
       if(!empty($_GET['azonosito']) && $_GET['azonosito']=='news'){
@@ -65,16 +72,16 @@ style="margin-bottom:0;background-image: url(kep1.jpg);;background-size:cover;he
      ?>
     </div>
 
-    <div class="col-sm-4"><!--Az űrlapok megjelenítésére van-->
-    <?php 
-
+    <div class='col-sm-4'><!--Az űrlapok megjelenítésére van-->
+      <?php 
       if(!empty($_GET['azonosito']) && $_GET['azonosito']=='reglap')
         include('reg.php');
       else 
         include('log.php');
-
-    ?>
-    </div>
+      ?>
+    </div>";
+    
+    
   </div>
 </div>
 
@@ -84,38 +91,3 @@ style="margin-bottom:0;background-image: url(kep1.jpg);;background-size:cover;he
 
 </body>
 </html>
-
-<!--<h2>About Me</h2>
-      <h5>Photo of me:</h5>
-      <div class="fakeimg">Fake Image</div>
-      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-      <h3>Some Links</h3>
-      <p>Lorem ipsum dolor sit ame.</p>
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-      </ul>
-      <hr class="d-sm-none">
-    </div>
-    <div class="col-sm-4">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Dec 7, 2017</h5>
-      <div class="fakeimg">Fake Image</div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <br>
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Sep 2, 2017</h5>
-      <div class="fakeimg">Fake Image</div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>-->

@@ -3,6 +3,7 @@ include('classes.php');
 if($_SERVER['REQUEST_METHOD']=='POST'){
   $log=new LogCheck();
   $log->errorLog();
+  $log->userLog();
 }
 ?>
 

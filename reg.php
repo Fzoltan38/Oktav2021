@@ -1,29 +1,36 @@
-<form>
+<?php
+include('classes.php');
+if($_SERVER['REQUEST_METHOD']=='POST'){
+  $r=new Reg();
+}
+?>
+
+<form action="index.php?azonosito=reglap" method="POST">
   <div class="form-group">
     <label>Felhasználónév:</label>
-    <input type="text" name="uname" class="form-control" placeholder="Írd be a felhasználó nevedet">
+    <input type="text" name="uname" required class="form-control" placeholder="Írd be a felhasználó nevedet">
   </div>
 
 
 
   <div class="form-group">
     <label>Jelszó1:</label>
-    <input type="password" name="upass1" class="form-control" placeholder="Írd be a jelszavad">
+    <input type="password" name="upass1" required class="form-control" placeholder="Írd be a jelszavad">
   </div>
 
   <div class="form-group">
     <label>Jelszó2:</label>
-    <input type="password" name="upass2" class="form-control" placeholder="Írd be a jelszavad mégegyszer">
+    <input type="password" name="upass2" required class="form-control" placeholder="Írd be a jelszavad mégegyszer">
   </div>
 
   <div class="form-group">
     <label>Email:</label>
-    <input type="email" name="uemail"class="form-control" placeholder="Add meg az email címed">
+    <input type="email" name="uemail" required class="form-control" placeholder="Add meg az email címed">
   </div>
 
   <div class="form-group">
     <label>Teljes név:</label>
-    <input type="text" name="ufullname"class="form-control" placeholder="Add meg a teljes neved">
+    <input type="text" name="ufullname" required class="form-control" placeholder="Add meg a teljes neved">
   </div>
 
   <div class="form-group form-check">
