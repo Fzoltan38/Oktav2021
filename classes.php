@@ -107,12 +107,14 @@ class LogCheck extends Forms{
             $result=mysqli_query($c->getConn(),$sql);
 
             if(mysqli_num_rows($result)>0){
-                echo("Van találat!"); 
+                $row=mysqli_fetch_assoc($result);
+                $_SESSION['szint']=$row['rank'];
+                $_SESSION['felhasznalonev']=$row['uname'];
+                header('location:index.php');
             }
             else {
                 echo("Nincs találat!");
             }
-
         }
     }
 }
@@ -143,6 +145,43 @@ class Reg extends Forms{
 
         $c=new Connect();
         mysqli_query($c->getConn(), $sql);
+    }
+}
+
+class Queries{
+    
+    private $result;
+
+    public function getResult(){
+        return $this->result;
+    }
+
+    public function selectrecord($id){
+        $sql="SELECT * FROM users WHERE id=$id";
+        $c=new Connect(); 
+        $this->result=mysqli_query($c->Getconn(), $sql);
+    }
+
+    public function deleterecord($id){
+        $sql="DELETE FROM `users` WHERE id=$id";
+        $c=new Connect(); 
+        mysqli_query($c->Getconn(), $sql);
+    }
+
+    public function updaterecord($id){
+        $this->selectrecord($id);
+        $row=mysqli_fetch_assoc($this->result);
+        
+        if($row['rank']<3)
+            $actualrank=$row['rank']+1;
+        else {
+            $actualrank=0;
+        }
+
+        $sql="UPDATE `users` SET `rank`=$actualrank WHERE id=$id";
+
+        $c=new Connect(); 
+        mysqli_query($c->Getconn(), $sql);
     }
 }
 ?>

@@ -1,5 +1,4 @@
 <?php
-include('classes.php');
 if($_SERVER['REQUEST_METHOD']=='POST'){
   $r=new Reg();
 }
