@@ -1,7 +1,7 @@
 <div class="container" style="margin-top:30px">
   <div class="row flex-column-reverse flex-md-row">
     <div class="col-md-8" style="flex-wrap: wrap ;"><!--Az tartalmi rész megjelenítésére van-->
-     Bemutatkozás, az oldal leírása.
+     <h1>Bemutatkozás, az oldal leírása.</h1>
     </div>
 
     <div class='col-md-4'><!--Az űrlapok megjelenítésére van-->

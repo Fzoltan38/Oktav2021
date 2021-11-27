@@ -145,6 +145,9 @@ class Reg extends Forms{
 
         $c=new Connect();
         mysqli_query($c->getConn(), $sql);
+      
+        header('location:index.php');
+
     }
 }
 

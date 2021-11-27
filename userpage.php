@@ -18,7 +18,8 @@
         include('kapcsolat.php');
       }
 
-      if(!empty($_GET['azonosito']) && $_GET['azonosito']=='admin'){
+      if(!empty($_GET['azonosito']) && $_GET['azonosito']=='admin' 
+          && $_SESSION['szint']==3){
         include('admin.php');
       }
 

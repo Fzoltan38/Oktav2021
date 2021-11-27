@@ -45,9 +45,16 @@ if (isset($_SESSION['felhasznalonev']))
       <li class="nav-item">
       <a class="nav-link" href="index.php?azonosito=contact">Kapcsolat</a>
       </li> 
+
+      <?php if(isset($_SESSION['szint']) && $_SESSION['szint']==3){?>
+      
       <li class="nav-item">
       <a class="nav-link" href="index.php?azonosito=admin">Admin</a>
       </li> 
+      
+      <?php }?>
+
+
       <li class="nav-item">
       <a class="nav-link" href="index.php?azonosito=exit">Kilépés</a>
       </li> 
